@@ -7,6 +7,6 @@ student3 = Student("john", "Physics", 3, True)
 
 print(student1.person)
 print(student2.gpa)
-print(student3)
+print(student3.person)
 
 

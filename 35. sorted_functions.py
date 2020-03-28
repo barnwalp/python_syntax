@@ -10,11 +10,9 @@ dict = {
 }
 print("\nprinting sorted dictionary is: " + str(sorted(dict)))
 
-
 # sorting words in a sentence
 sentence = "this is a test string from pankaj"
 print("\nwords of the sentence in the sorted order: " + str(sorted(sentence.split(), key=str.lower)))
-
 
 # sorting a tuple
 student_tuples = [
@@ -23,6 +21,20 @@ student_tuples = [
     ('dave', 'B', 10),
 ]
 print("\ntuple sorted based on 2nd index: " + str(sorted(student_tuples, key=lambda student: student[2])))
+
+
+# sorting a tuple based on second element
+def take_second(element):
+    return element[1]
+
+
+random = [
+    (2, 2),
+    (3, 5),
+    (4, 1),
+    (1, 3)
+]
+print("\nsorted list: " + str(sorted(random, key=take_second)))
 
 # to check if Student class is working
 student1 = Student("john", "Physics", 3, True)
@@ -35,4 +47,4 @@ student_objects = [
     Student('dave', 'Math', 2.9, False)
 ]
 print("\n" + str(student1.major))
-print(sorted(student_objects, key=lambda student: student.gpa))
+sorted(student_objects, key=lambda a: a.gpa)
