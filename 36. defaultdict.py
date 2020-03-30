@@ -19,3 +19,14 @@ figure = [1, 2, 3, 4, 2, 4, 1, 2]
 for index in figure:
     int_data[index] += 1
 print(int_data)
+
+# defaultdict will create any item that you
+# try to access
+print("-------------------")
+word = "Pankaj Barnwal"
+word_dict = defaultdict(int)
+for char in word:
+    word_dict[char] += 1
+
+print(word_dict)
+
