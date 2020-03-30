@@ -10,3 +10,12 @@ list_data['python'].append("language")
 print(list_data)
 for index in list_data.items():
     print(index)
+
+# using int as default_factory
+print("-------------------")
+int_data = defaultdict(int)
+
+figure = [1, 2, 3, 4, 2, 4, 1, 2]
+for index in figure:
+    int_data[index] += 1
+print(int_data)
