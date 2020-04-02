@@ -8,4 +8,4 @@ print(coordinates[0])
 # coordinates[1] = 12
 
 long_coordinates = [(4,5), (6, 7), (80, 34)]
-print(long_coordinates[2])
+print(long_coordinates[2][0])
