@@ -1,3 +1,4 @@
 #Ignoring directories
 #Both the directories itself and its content will be ignored
 venv/
+.idea/

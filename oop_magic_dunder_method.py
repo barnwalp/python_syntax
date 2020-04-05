@@ -25,12 +25,23 @@ class Employee:
     def __str__(self):
         return '{} - {}'.format(self.fullname(), self.email)
 
+    # if you want the __add__ function to work for the object, you
+    # have to make one for it
+    def __add__(self, other):
+        return self.pay + other.pay
+
+    def __len__(self):
+        return len(self.fullname())
+
 
 emp_1 = Employee('Pankaj', 'Barnwal', 60000)
 emp_2 = Employee('Kumari', 'Payal', 60000)
 
 # this will first check str function and then look for repr
 print(emp_1)
+
+print(emp_1 + emp_2)
+print(len(emp_1))
 
 print("\n----------Dunder Functions----------\n")
 
@@ -40,3 +51,4 @@ print('a' + 'b')
 # in the background this is being achieved through dunder methods like this
 print(int.__add__(1,2))
 print(str.__add__('a', 'b'))
+print('test'.__len__())
