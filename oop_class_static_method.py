@@ -24,6 +24,7 @@ class Employee:
         cls.raise_amt = amount
 
     @classmethod
+    # classmethod is also used as a constructor
     # as per convention this method start with from
     def from_string(cls, emp_str):
         first, last, pay = emp_str.split('-')
