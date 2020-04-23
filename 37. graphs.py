@@ -1,20 +1,20 @@
 # function to generate all edges
 def generate_edges(graph):
     edge_collection = []
-    # only key will be returned as vertex
-    for vertex in graph:
-        # get value from the dictionary using vertex key
-        for edge in graph[vertex]:
-            # vertex, edge is under () so that it adds as a tuple
-            edge_collection.append((vertex, edge))
+    # key and value of the dictionary will be returned
+    for key, value in graph.items():
+        # get individual edges from the value list
+        for edge in value:
+            # key, value is under () so that it adds as a tuple
+            edge_collection.append((key, edge))
     return edge_collection
 
 
 def find_isolated_nodes(graph):
     isolated_nodes = []
-    for vertex in graph:
-        if not graph[vertex]:
-            isolated_nodes.append(vertex)
+    for key, value in graph.items():
+        if not graph[key]:
+            isolated_nodes.append(key)
     return isolated_nodes
 
 
@@ -29,5 +29,5 @@ graph = {
     "g": []
 }
 
-print("Edge lists are: " + str(generate_edges(graph)))
-print("Isolated nodes are: " + str(find_isolated_nodes(graph)))
+print(f'Edge lists are:  {generate_edges(graph)}')
+print(f'Isolated nodes are: {find_isolated_nodes(graph)}')
