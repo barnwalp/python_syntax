@@ -29,12 +29,13 @@ class Graph(object):
 
     def add_edge(self, edge):
         edge = set(edge)
-
         (vertex1, vertex2) = tuple(edge)
         if vertex1 in self.__graph_dict:
             self.__graph_dict[vertex1].append(vertex2)
         else:
-            self.__graph_dict[vertex1] = [vertex2]
+            # since vertex1 is not in the graph, it should be added first
+            self.add_vertex(vertex1)
+            self.__graph_dict[vertex1].append(vertex2)
 
     def __generate_edges(self):
         edges = []
@@ -56,15 +57,30 @@ class Graph(object):
         return res
 
 
-g = {'a': ['d'],
-     'b': ['c'],
-     'c': ['b', 'c', 'd', 'e'],
-     'd': ['a', 'c'],
-     'e': ['c'],
-     'f': []
-     }
+if __name__ == "__main__":
+    g = {'a': ['d'],
+         'b': ['c'],
+         'c': ['b', 'c', 'd', 'e'],
+         'd': ['a', 'c'],
+         'e': ['c'],
+         'f': []
+         }
 
-graph = Graph(g)
-print(f'vertices of graph: {graph.vertices()}')
-print(f'edges of graph: {graph.edges()}')
-print(f'\n{graph}')
+    graph = Graph(g)
+    print(f'vertices of graph: {graph.vertices()}')
+    print(f'edges of graph: {graph.edges()}')
+
+    print(f'\nAdd Vertex: "z"')
+    graph.add_vertex("z")
+
+    print(f'\n{graph}')
+
+    print(f'\nadd an edge: (a,z)')
+    graph.add_edge({'a', 'z'})
+
+    print(f'\n{graph}')
+
+    print('Adding an edge {"x","y"} with new vertices:')
+    graph.add_edge({"x", "y"})
+
+    print(f'\n{graph}')
