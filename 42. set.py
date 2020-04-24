@@ -4,8 +4,11 @@
  whether a specific element is contained in the set based on hash table.
  Since sets are unordered, we can not access them using index, like list.
 """
+# creating an empty set
+set1 = set()
 
 my_set = set(['a', 'b', 'c'])
+
 print(my_set)
 
 # Adding data in a set
