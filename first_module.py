@@ -4,4 +4,14 @@
 
 # When we import a module, python sets this __name__ variable, to the name of
 # the file so in this case it is first_module
-print(f'First Module\'s Name: {"{}".format(__name__)}')
+
+
+def main():
+    print('printed from main method of first module')
+
+
+if __name__ == '__main__':
+    print('run directly')
+    main()
+else:
+    print('run from import')
