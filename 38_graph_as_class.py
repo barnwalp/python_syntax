@@ -30,7 +30,11 @@ class Graph(object):
     def remove_vertex(self, vertex):
         neighbors = self.__graph_dict[vertex]
         del self.__graph_dict[vertex]
-        # print(f'adjacent vertiecs to {vertex} are: {neighbors}')
+        # to ensure that deleted vertex is left out from further deletion
+        if vertex in neighbors:
+            neighbors.remove(vertex)
+        print(f'adjacent vertiecs to {vertex} are: {neighbors}')
+        print(f'graph after deleting vertex {vertex} is: {self}')
         for vertices in neighbors:
             for value in self.__graph_dict[vertices]:
                 if value is vertex:
@@ -51,6 +55,16 @@ class Graph(object):
             self.add_vertex(vertex2)
             self.__graph_dict[vertex2].append(vertex1)
             # print(f'{vertex1} --> {self.__graph_dict[vertex1]}')
+
+    def remove_edge(self, edge):
+        edge = set(edge)
+        (vertex1, vertex2) = tuple(edge)
+        print(f'{vertex1} - -> {vertex2}')
+        print('remove_edge is running')
+        self.remove_vertex(vertex1)
+        print('remove_edge is running')
+        self.remove_vertex(vertex2)
+        print('remove_edge is running')
 
     def __generate_edges(self):
         edges = []
@@ -124,3 +138,9 @@ if __name__ == "__main__":
     print(f'\n{graph}')
     graph.remove_vertex("a")
     print(f'\ngraph after removing vertex a is: \n{graph}')
+
+    graph.remove_vertex("c")
+    print(f'\ngraph after removing vertex c is: \n{graph}')
+
+    # print('\nremoving edge (b, c)')
+    # graph.remove_edge({'b', 'c'})
