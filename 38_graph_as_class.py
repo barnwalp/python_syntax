@@ -30,18 +30,21 @@ class Graph(object):
     def remove_vertex(self, vertex):
         neighbors = self.__graph_dict[vertex]
         del self.__graph_dict[vertex]
+        print(neighbors)
         for vertices in neighbors:
-            print(self.__graph_dict[vertices])
+            print(f'neighbour vertices are: {self.__graph_dict[vertices]}')
 
     def add_edge(self, edge):
         edge = set(edge)
         (vertex1, vertex2) = tuple(edge)
+        # print(f'{vertex1} --> {vertex2}')
         if vertex1 in self.__graph_dict:
             self.__graph_dict[vertex1].append(vertex2)
         else:
             # since vertex1 is not in the graph, it should be added first
             self.add_vertex(vertex1)
             self.__graph_dict[vertex1].append(vertex2)
+            # print(f'{vertex1} --> {self.__graph_dict[vertex1]}')
 
     def __generate_edges(self):
         edges = []
@@ -62,7 +65,7 @@ class Graph(object):
     def neighbour_vertices(self, vertex):
         return self.__graph_dict[vertex]
 
-    def __str__(self):
+    def __repr__(self):
         res = "vertices: "
         for k in self.__graph_dict:
             res += str(k) + " "
@@ -70,6 +73,13 @@ class Graph(object):
         for edge in self.__generate_edges():
             res += str(edge) + " "
         return res
+
+    def __str__(self):
+        output = "graph is: \n"
+        for key, value in self.__graph_dict.items():
+            # print(f'{key} --> {value}')
+            output += str(key) + ' --> ' + str(value) + "\n"
+        return output
 
 
 if __name__ == "__main__":
@@ -82,8 +92,8 @@ if __name__ == "__main__":
          }
 
     graph = Graph(g)
-    print(f'vertices of graph: {graph.vertices()}')
-    print(f'edges of graph: {graph.edges()}')
+    # print(f'vertices of graph: {graph.vertices()}')
+    # print(f'edges of graph: {graph.edges()}')
 
     print(f'\nAdd Vertex: "z"')
     graph.add_vertex("z")
@@ -98,10 +108,10 @@ if __name__ == "__main__":
     print('Adding an edge {"x","y"} with new vertices:')
     graph.add_edge({"x", "y"})
 
-    print(f'\n{graph}')
-
-    print(f'Is vertex a adjacent to b: {graph.adjacent_edge("a", "b")}')
-    print(f'Is vertex c adjacent to d: {graph.adjacent_edge("c", "d")}')
+    # print(f'\n{graph}')
+    #
+    # print(f'Is vertex a adjacent to b: {graph.adjacent_edge("a", "b")}')
+    # print(f'Is vertex c adjacent to d: {graph.adjacent_edge("c", "d")}')
 
     print(f'Neighbors vertices of "a" are: {graph.neighbour_vertices("a")}')
 
