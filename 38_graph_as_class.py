@@ -30,9 +30,12 @@ class Graph(object):
     def remove_vertex(self, vertex):
         neighbors = self.__graph_dict[vertex]
         del self.__graph_dict[vertex]
-        print(neighbors)
+        # print(f'adjacent vertiecs to {vertex} are: {neighbors}')
         for vertices in neighbors:
-            print(f'neighbour vertices are: {self.__graph_dict[vertices]}')
+            for value in self.__graph_dict[vertices]:
+                if value is vertex:
+                    self.__graph_dict[vertices].remove(vertex)
+            # print(f'neighbour vertices are: {self.__graph_dict[vertices]}')
 
     def add_edge(self, edge):
         edge = set(edge)
@@ -40,10 +43,13 @@ class Graph(object):
         # print(f'{vertex1} --> {vertex2}')
         if vertex1 in self.__graph_dict:
             self.__graph_dict[vertex1].append(vertex2)
+            self.__graph_dict[vertex2].append(vertex1)
         else:
             # since vertex1 is not in the graph, it should be added first
             self.add_vertex(vertex1)
             self.__graph_dict[vertex1].append(vertex2)
+            self.add_vertex(vertex2)
+            self.__graph_dict[vertex2].append(vertex1)
             # print(f'{vertex1} --> {self.__graph_dict[vertex1]}')
 
     def __generate_edges(self):
@@ -113,8 +119,8 @@ if __name__ == "__main__":
     # print(f'Is vertex a adjacent to b: {graph.adjacent_edge("a", "b")}')
     # print(f'Is vertex c adjacent to d: {graph.adjacent_edge("c", "d")}')
 
-    print(f'Neighbors vertices of "a" are: {graph.neighbour_vertices("a")}')
+    # print(f'Neighbors vertices of "a" are: {graph.neighbour_vertices("a")}')
 
     print(f'\n{graph}')
     graph.remove_vertex("a")
-    print(f'\n{graph}')
+    print(f'\ngraph after removing vertex a is: \n{graph}')
