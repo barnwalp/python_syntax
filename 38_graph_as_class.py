@@ -59,12 +59,10 @@ class Graph(object):
     def remove_edge(self, edge):
         edge = set(edge)
         (vertex1, vertex2) = tuple(edge)
-        print(f'{vertex1} - -> {vertex2}')
-        print('remove_edge is running')
-        self.remove_vertex(vertex1)
-        print('remove_edge is running')
-        self.remove_vertex(vertex2)
-        print('remove_edge is running')
+        if vertex2 in self.__graph_dict[vertex1]:
+            self.__graph_dict[vertex1].remove(vertex2)
+        if vertex1 in self.__graph_dict[vertex2]:
+            self.__graph_dict[vertex2].remove(vertex1)
 
     def __generate_edges(self):
         edges = []
@@ -139,8 +137,6 @@ if __name__ == "__main__":
     graph.remove_vertex("a")
     print(f'\ngraph after removing vertex a is: \n{graph}')
 
-    graph.remove_vertex("c")
-    print(f'\ngraph after removing vertex c is: \n{graph}')
-
-    # print('\nremoving edge (b, c)')
-    # graph.remove_edge({'b', 'c'})
+    print('\nremoving edge (b, c)')
+    graph.remove_edge({'b', 'c'})
+    print(f'\n{graph}')
