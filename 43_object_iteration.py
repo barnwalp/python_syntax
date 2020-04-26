@@ -12,8 +12,15 @@ class Tailer:
     def stich(self):
         pass
 
+    def __iter__(self):
+        return self
 
-my_shirt = Tailer("shirt", "hip", [56, 50, 21, 10, 12])
+    def __next__(self):
+        pass
 
-for vars, value in my_shirt.__dict__.items():
-    print(f'{vars} --> {value}')
+
+if __name__ == "__main__":
+    my_shirt = Tailer("shirt", "hip", [56, 50, 21, 10, 12])
+
+    for vars, value in my_shirt.__dict__.items():
+        print(f'{vars} --> {value}')
