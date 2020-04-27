@@ -31,6 +31,30 @@ while True:
 # Iterator can only go forward
 
 
+class MyRange:
+    def __init__(self, start, end):
+        self.value = start
+        self.end = end
+
+    # iter method has to return an iterator, an object which has a next method
+    def __iter__(self):
+        return self
+
+    # as iter has returned self, which needs to be an iterator. now its
+    # imperative to ensure that self has next method as well
+    def __next__(self):
+        if self.value >= self.end:
+            raise StopIteration
+        current = self.value
+        self.value += 1
+        return current
+
+
+nums = MyRange(1, 10)
+for num in nums:
+    print(num)
+
+
 class Tailer:
     def __init__(self, cloth_type, style, measurements=None):
         self.cloth_type = cloth_type
@@ -45,11 +69,12 @@ class Tailer:
     def stich(self):
         pass
 
-    def __iter__(self):
-        return self
+    # def __iter__(self):
+    #     return self
+    #
 
-    def __next__(self):
-        pass
+    # def __next__(self):
+    #     if self.measurements
 
 
 if __name__ == "__main__":
