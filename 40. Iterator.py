@@ -25,10 +25,10 @@ be used to traverse the container just once.
 my_tuple = ('apple', 'banana', 'cherry')
 my_iter = iter(my_tuple)
 # my_iter is and iterator of my_tuple, which is an iterable.
-print(next(my_iter))
-print(next(my_iter))
-print(next(my_iter))
-print('-----------')
+# print(next(my_iter))
+# print(next(my_iter))
+# print(next(my_iter))
+# print('-----------')
 
 for data in my_tuple:
     print(data)
