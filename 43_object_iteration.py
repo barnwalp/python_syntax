@@ -15,26 +15,30 @@ dir(i_nums)     # will have __next__()
 # print(next(i_nums))
 # print(next(i_nums))     # will raise error as there are only 3 value
 
-
 # for loop basically gets an iterator of original object like we did on line 8
 # and then it's getting the next value until it hits a stop iteration exception
 # Iterator is an object with a state so that it remembers where it is during
 # iteration. Basically it is doing something like this
-
+# iterators can only go forward
 while True:
     try:
         item = next(i_nums)
         print(item)
     except StopIteration:
         break
-
-# Iterator can only go forward
+print('-----------------')
 
 
 class MyRange:
-    def __init__(self, start, end):
-        self.value = start
-        self.end = end
+    def __init__(self, my_list=None):
+        # self.value = start
+        # self.end = end
+        if my_list is None:
+            self.my_list = []
+        else:
+            self.my_list = my_list
+        self.end = len(self.my_list)
+        self.value = 0
 
     # iter method has to return an iterator, an object which has a next method
     def __iter__(self):
@@ -45,14 +49,18 @@ class MyRange:
     def __next__(self):
         if self.value >= self.end:
             raise StopIteration
-        current = self.value
+        current = self.my_list[self.value]
         self.value += 1
+        # print(current)
         return current
 
 
-nums = MyRange(1, 10)
+my_list = [8, 6, 7, 9, 2, 3]
+nums = MyRange(my_list)
 for num in nums:
-    print(num)
+    print(f'value of my_list is: {num}')
+
+print('-------------------')
 
 
 class Tailer:
