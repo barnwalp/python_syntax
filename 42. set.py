@@ -1,5 +1,5 @@
 """
- A set is an unordered collection data type that is iterable, mutable and
+ A set is an unordered collection data type that is iterable, *mutable* and
  has no duplicate elements.Set has a highly optimized method for cheking
  whether a specific element is contained in the set based on hash table.
  Since sets are unordered, we can not access them using index, like list.
@@ -55,3 +55,12 @@ s1 & s2	           the intersection of s1 and s2
 s1 – s2	           the set of elements in s1 but not s2
 s1 ˆ s2	           the set of elements in precisely one of s1 or s2
 """
+print('\n---------------------------')
+# removing duplicates from the list
+my_list = [9, 6, 8, 1, 3, 7, 4, 8, 9, 4, 5, 1, 7]
+second_list = [9, 6, 8, 1, 3, 7, 4]
+
+print(my_list)
+# after converting the list into set and then back to list will
+# also change the order of the list
+print(list(set(my_list)))
