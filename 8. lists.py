@@ -47,3 +47,38 @@ print(list_2)
 # Deleting more than one element
 del list_3[2:5]
 print(list_3)
+
+# aliasing
+a = [1, 4, 6]
+b = a
+
+b[0] = 7
+# If a refers to an object, and you assign b=a, then both variables refers
+# to the same object; it's called aliasing. it is safer to avoid aliasing
+# while working with mutable object
+print(a)
+
+# when a list variable is passed as a parameter to a function, then both
+# variable and the function parameter work as an alias and changing one will
+# automatically change the other
+
+
+def delete_value(t):
+    del t[0]
+
+
+numbers = [2, 4, 6, 3, 1]
+delete_value(numbers)
+print(numbers)
+
+# there are operators that modify the list while other that creates a
+# new list. eg. append modifies the list while + create a new list
+
+
+def bad_delete_head(t):
+    t = t[1:]
+
+
+# the slice operator will create a new list and assignment will make t refers
+# to it; but none of it will have any effect on the list that was passed as
+# an argument
