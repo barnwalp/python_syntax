@@ -82,3 +82,17 @@ def bad_delete_head(t):
 # the slice operator will create a new list and assignment will make t refers
 # to it; but none of it will have any effect on the list that was passed as
 # an argument
+
+
+# Debugging
+# Most list methods modifies the argument and return None; unline string
+# methods which returns a new string and leave the original alone
+list_1 = list_1.sort()      # WRONG!!
+print(list_1)
+
+# make copies to avoid aliasing
+t = list_2[:]
+t.sort()
+
+# you can also use sorted() which returns a new list and keep original alone.
+print(t)
