@@ -64,3 +64,12 @@ d_2 = dict()
 for c in word_2:
     d_2[c] = d_2.get(c, 0) + 1
 print(d_2)
+
+# Sorting a dictionary based on keys
+sorted_keys = list(d_2.keys())
+sorted_keys.sort()
+sorted_dict = dict()
+for key in sorted_keys:
+    print(key, d_2[key])
+    sorted_dict[key] = d_2[key]
+print(sorted_dict)
