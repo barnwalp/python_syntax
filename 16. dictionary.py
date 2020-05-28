@@ -32,6 +32,11 @@ dict_1 = {
 minimum = min(dict_1.items(), key=lambda x: x[1])
 print(minimum)
 
+# The in operator uses different algorithm for lists and dictionary.
+# for lists, it uses a linera search algorithm while for dictionary,
+# python uses hash table which takes same amount of time no matter
+# how many items are in a dictionary.
+
 # in operator in dictionary searches for keys in the dictionary
 if 1 in dict_1:
     print(dict_1.get(1))
@@ -40,3 +45,22 @@ if 1 in dict_1:
 values = list(dict_1.values())
 if 9 in values:
     print("number found")
+
+# Dictionary as a set of counters; histogram
+word = "Kriti Sanon"
+d = dict()
+for c in word:
+    if c in d:
+        # increment the counter by 1 if character is already in the dict
+        d[c] = d[c] + 1
+    else:
+        # make a new entry if character is not in the dict
+        d[c] = 1
+print(d)
+
+# Above implementation can be made more succint using .get method
+word_2 = 'Ananya Mathur'
+d_2 = dict()
+for c in word_2:
+    d_2[c] = d_2.get(c, 0) + 1
+print(d_2)
