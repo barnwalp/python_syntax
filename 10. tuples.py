@@ -54,3 +54,10 @@ for length, word in word_list:
     sorted_txt.append(word)
 
 print(sorted_txt)
+
+# Tuple assignment
+x, y = sorted_txt[:2]
+print(f'{x} --> {y}')
+print((x, y))
+(k, l) = sorted_txt[:2]
+print((k, l))
