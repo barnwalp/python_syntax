@@ -6,8 +6,8 @@ list_data = defaultdict(list)
 list_data['python'].append("awesome")
 list_data['other'].append("not relevant")
 list_data['python'].append("language")
-
-print(list_data)
+print('check')
+print(f'list data is: {list_data}')
 for index in list_data.items():
     print(index)
 
@@ -29,4 +29,3 @@ for char in word:
     word_dict[char] += 1
 
 print(word_dict)
-

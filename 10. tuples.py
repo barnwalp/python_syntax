@@ -23,3 +23,34 @@ list_data.append(100)
 tuple_data = tuple(list_data)
 
 print("tuple after appending 100: " + str(tuple_data))
+
+# tuples are also comparable and hashable, meaning we can sort lists
+# of them and use tuple as key value in dictionaries.
+
+emp_tuple = ()
+print(type(emp_tuple))
+
+s_tuple = tuple('pankaj')
+print(s_tuple)
+
+# tuples also support slice operator.
+# you cant modify the elements of a tuple, but your ca replace one
+# tuple with another
+t = ('B', ) + s_tuple[:]
+print(t)
+
+txt = 'but soft what light in yonder window breaks'
+words = txt.split()
+word_list = list()
+
+for word in words:
+    word_list.append((len(word), word))
+
+word_list.sort(reverse=True)
+print(word_list)
+
+sorted_txt = list()
+for length, word in word_list:
+    sorted_txt.append(word)
+
+print(sorted_txt)
