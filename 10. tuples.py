@@ -55,9 +55,25 @@ for length, word in word_list:
 
 print(sorted_txt)
 
-# Tuple assignment
+# Tuple assignment, here right side can be any kind of sequence(string, list
+# or tuple)
 x, y = sorted_txt[:2]
 print(f'{x} --> {y}')
 print((x, y))
 (k, l) = sorted_txt[:2]
 print((k, l))
+
+# Swapping variables using tuples
+x, y = y, x
+print(f'{x} --> {y}')
+
+# Dictionaries have a method called items that returns a list of tuples where
+# each tuple is key-value pair:
+
+dict_1 = {'a': 10, 'b': 1, 'c': 22}
+
+# following line will return a list of tuples
+list_of_tuples = list(dict_1.items())
+print(list_of_tuples)
+for char, number in dict_1.items():
+    print(f'{char} ==> {number}')
