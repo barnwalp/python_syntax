@@ -27,8 +27,11 @@ def main():
     # of CPU cycles. This type of wait is called a busy wait and the CPU that
     # is stuck doing a lot of work over nothing is said to be spinning. Never
     # do this.
-    while result is None:
-        pass
+
+    # while result is None:
+    #    pass
+
+    thread.join()
 
     print(f'The result is: {result}')
 
