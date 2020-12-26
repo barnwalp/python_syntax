@@ -1,9 +1,14 @@
 import requests
+import json
+from datetime import date
 
 
-url = "https://morningstar1.p.rapidapi.com/dividends"
+today = date.today().strftime('%Y-%m-%d')
+ticker = 'IOC'
+report_type = 'income-statement'
+url = f'https://morningstar1.p.rapidapi.com/fundamentals/yearly/{report_type}/restated'
 
-querystring = {"Ticker":"IOC","Mic":"XNSE"}
+querystring = {"Ticker": ticker,"Mic":"XNSE"}
 
 headers = {
     'accept': "string",
@@ -13,46 +18,14 @@ headers = {
 
 response = requests.request("GET", url, headers=headers, params=querystring)
 
-print(response.text)
-"""
-url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-financials"
+if response.status_code == 200:
+    # get the response data in readable format
+    json_object = json.dumps(response.json(), sort_keys=True, indent=4)
+else:
+    print(response.status_code)
 
-querystring = {"symbol":"AMRN","region":"US"}
+path = "C:\\Users\\panka\\github_repo\\datasets\\share"
+path_to_file = f'{path}\\{ticker}_{report_type}_{today}.json'
+with open(path_to_file, 'w') as f:
+    f.write(json_object)
 
-headers = {
-    'x-rapidapi-key': "5015d61e13mshcbb3771deca7b37p19c7c8jsnc900286d0d7b",
-    'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
-    }
-
-response = requests.request("GET", url, headers=headers, params=querystring)
-
-print(response.text)
-
-url = "https://apidojo-yahoo-finance-v1.p.rapidapi.com/news/v2/get-details"
-
-querystring = {"uuid":"9803606d-a324-3864-83a8-2bd621e6ccbd","region":"US"}
-
-headers = {
-    'x-rapidapi-key': "5015d61e13mshcbb3771deca7b37p19c7c8jsnc900286d0d7b",
-    'x-rapidapi-host': "apidojo-yahoo-finance-v1.p.rapidapi.com"
-    }
-
-response = requests.request("GET", url, headers=headers, params=querystring)
-
-print(response.text)
-
-response = requests.get('https://randomfox.ca/floof')
-
-# will return 200 if everything goes OK
-print(response.status_code)
-
-# will return the response text
-# print(response.text)
-
-# will return data in a dictionary format
-print(response.json())
-
-fox = response.json()
-
-print(fox['image'])
-"""
