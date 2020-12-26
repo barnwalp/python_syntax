@@ -29,4 +29,3 @@ def get_stock_fundamental(ticker, report_type):
     path_to_file = f'{path}\\{ticker}_{report_type}_{today}.json'
     with open(path_to_file, 'w') as f:
         f.write(json_object)
-
