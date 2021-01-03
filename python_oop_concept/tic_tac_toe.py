@@ -99,7 +99,7 @@ def selectRandom(li):
 
 
 def isBoardFull(board):
-    if board.count(' ') > 1:
+    if board.count(' ') == 1:
         return True
     else:
         return False
@@ -107,18 +107,24 @@ def isBoardFull(board):
 
 def main():
     print('Welcome to tic tac toe')
-    printBoard()
+    printBoard(board)
     while not(isBoardFull(board)):
         if not(isWinner(board, 'o')):
             playerMove()
-            printBoard()
+            print('lul')
+            printBoard(board)
         else:
             print('Sorry, O\'s won this time')
             break
 
         if not(isWinner(board, 'x')):
-            compMove()
-            printBoard()
+            move = compMove()
+            if move == 0:
+                print('Game is Tie! No more spaces left to move')
+            else:
+                insertBoard('o', move)
+                print('Computer place an o in position', move, ':')
+                printBoard(board)
         else:
             print('x\'s won this time! Good Job')
             break
@@ -126,5 +132,14 @@ def main():
         print('Tie Game')
 
 main()
+
+while True:
+    answer = input('Do you want to play again? (Y/N)')
+    if answer.lower() == 'y' or answer.lower == 'yes':
+        board = [' ' for x in range(10)]
+        print('-------------------------------')
+        main()
+    else:
+        break
 
 
