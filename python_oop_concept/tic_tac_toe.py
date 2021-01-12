@@ -131,8 +131,8 @@ def main():
     if isBoardFull(board):
         print('Tie Game')
 
-main()
 
+main()
 while True:
     answer = input('Do you want to play again? (Y/N)')
     if answer.lower() == 'y' or answer.lower == 'yes':
