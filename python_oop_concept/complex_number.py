@@ -45,15 +45,21 @@ class Complex(object):
         conj_no.real = no.real
         conj_no.imaginary = no.imaginary-2*no.imaginary
         a = self.__mul__(conj_no)
+        print(f'complex number a is: {a}')
         b = no.__mul__(conj_no)
         denm = b.split('+')[0]
-        print(f'b is: {denm}')
+        #print(f'b is: {denm}')
         if len(a.split('+')) == 2:
             r, i = a.split('+')
             i = i[:-1]
-        else:
+        elif len(a.split('-')) == 2:
             r, i = a.split('-')
-            i = -i[:-1]
+            i = -float(i[:-1])
+        elif len(a.split('-')) > 2:
+            temp, r, i = a.split('-')
+            r = -float(r)
+            i = -float(i[:-1])
+
         #print(f'r is: {r} and i is: {i}')
         if not float(denm) == 0.00:
             new.real = float(r)/float(denm)
