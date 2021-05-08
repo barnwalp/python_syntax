@@ -17,3 +17,14 @@ with open('new.txt', 'w') as f:
 with open('new.txt', 'r') as f:
     for line in f.readlines():
         print(line)
+
+# Appending to a file
+with open('new.txt', 'a') as f:
+    new_content = '\nextra stuff\nthings..\nmore things'
+    f.write(new_content)
+
+# Reading and appending at the same time
+with open('new.txt', 'a+') as f:
+    for line in f.readlines():
+        print(line)
+    f.write("\nreading and appending")
