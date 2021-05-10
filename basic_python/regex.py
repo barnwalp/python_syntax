@@ -40,26 +40,33 @@ def literal_search(search, text):
 
 
 # searching for phone number
+print("searching for phone number")
 print(literal_search(r'\d\d\d[-.]\d\d\d[-.]\d\d\d', text_to_search))
 
 # searching for starting words
+print("\nsearching for starting words")
 print(literal_search(r'^Start', sentence))
 
 # searching for phone number starting with 800 and 900
+print("\nsearching for phone number starting with 800 and 900")
 print(literal_search(r'[89]00[-.]\d\d\d[-.]\d\d\d', text_to_search))
 
 # searching for individual letter from a to z and A to Z
-#print(literal_search(r'[a-zA-Z]', text_to_search))
+print("\nsearching for individual letter from a to z and A to Z")
+print(literal_search(r'[a-zA-Z]', text_to_search))
 
 # searching for cat mat rat but not bat
+print("\nsearching for cat mat rat but not bat")
 print(literal_search(r'[^b]at', text_to_search))
 
 # matching multiple characters at once
+print("\nmatching multiple characters at once")
 print(literal_search(r'\d{3}[-.]\d{3}[-.]\d{4}', text_to_search))
 
-# matching mr in the text
+# matching mr in the text \. means that there could be either one . or 0
+# after mr. eg = Mr. or Mr
+print("\nmatching mr in the text")
 print(literal_search(r'Mr\.?\s[A-Z]', text_to_search))
-
 """
 .       - Any Character Except New Line
 \d      - Digit (0-9)
