@@ -19,3 +19,11 @@ my_cursor.execute("SELECT * FROM students LIMIT 5 OFFSET 2")
 my_results = my_cursor.fetchall()
 for row in my_results:
     print(row)
+
+# deleting row in database
+sql = "DELETE FROM students WHERE name = 'Hina'"
+
+# deleting complete table from database
+# sql = "DROP TABLE IF EXISTS students"
+my_cursor.execute(sql)
+mydb.commit()
