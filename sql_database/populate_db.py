@@ -34,6 +34,8 @@ data = [
     ]
 
 # Executing the formula in sql with the tuple
+# it is always advisable to use sql queries in this
+# form so as to avoid sql injection
 mycursor.executemany(sqlFormula, data)
 # Saving the databases
 mydb.commit()
