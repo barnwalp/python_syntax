@@ -67,6 +67,18 @@ print(literal_search(r'\d{3}[-.]\d{3}[-.]\d{4}', text_to_search))
 # after mr. eg = Mr. or Mr
 print("\nmatching mr in the text")
 print(literal_search(r'Mr\.?\s[A-Z]', text_to_search))
+
+# Getting the matched value using regex:
+# Let's say we need Four from the following string a
+
+a = 'Star-rating Four'
+pattern = re.compile(r'\s\w+')
+for val in pattern.finditer(a):
+    # group() returns the value of the searched object
+    # strip() is to remove whitespace around the word
+    print(val.group().strip())
+
+
 """
 .       - Any Character Except New Line
 \d      - Digit (0-9)
